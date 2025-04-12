@@ -38,7 +38,7 @@ export default function CATIDashboard() {
       } catch (error) {
         console.error("Error fetching counts:", error);
       }
-    };
+    }; 
 
     fetchCounts();
   }, []);

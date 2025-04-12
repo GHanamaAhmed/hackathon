@@ -6,19 +6,10 @@ export const revalidate = 0;
 
 export async function GET() {
   try {
-    // Count only projects that belong to CDE
-    const totalCount = await db.project.count({
-      where: {
-        currentStep: 2,
-      },
-    });
-
+    const totalCount = await db.project.count();
     // Assuming pending review means projects in the SENT state
     const pendingCount = await db.project.count({
-      where: {
-        currentStep: 2,
-        state: "SENT",
-      },
+      where: { state: "SENT" },
     });
 
     return NextResponse.json({ totalCount, pendingCount });
@@ -28,5 +19,5 @@ export async function GET() {
       { error: "Failed to fetch counts" },
       { status: 500 }
     );
-  } 
+  }
 }

@@ -114,7 +114,7 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="flex min-h-[100dvh] flex-col">
+    <div className="flex min-h-[100dvh] flex-col items-center">
       {/* Header */}
       <header
         className={`sticky top-0 z-50 w-full flex justify-center backdrop-blur-lg transition-all duration-300 ${
@@ -235,12 +235,6 @@ export default function LandingPage() {
             <div className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-black bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
 
             <div className="text-center max-w-3xl mx-auto mb-12">
-              <Badge
-                className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium"
-                variant="secondary"
-              >
-                Coming Soon
-              </Badge>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
                 Univate: Empowering Innovation and Unity
               </h1>
@@ -394,7 +388,7 @@ export default function LandingPage() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full border-t bg-background/95 backdrop-blur-sm">
+      <footer className="w-full flex justify-center border-t bg-background/95 backdrop-blur-sm">
         <div className="container flex flex-col gap-8 px-4 py-10 md:px-6 lg:py-16">
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
             <div className="space-y-4">
