@@ -220,7 +220,7 @@ export default function ProjectDetails({
                       <SelectContent>
                         <SelectItem value="1">Incabator</SelectItem>
                         <SelectItem value="2">Cde</SelectItem>
-                        <SelectItem value="3">Cati 3</SelectItem>
+                        <SelectItem value="3">Cati</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
