@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
+import { useAuth } from "@clerk/nextjs";
 
 export default function CATIDashboard() {
   const [sending, setSending] = useState(false);
@@ -28,7 +29,7 @@ export default function CATIDashboard() {
   const [pdfBase64, setPdfBase64] = useState("");
   const [projectCount, setProjectCount] = useState(0);
   const [pendingCount, setPendingCount] = useState(0);
-
+  const auth = useAuth();
   useEffect(() => {
     const fetchCounts = async () => {
       try {
@@ -100,12 +101,20 @@ export default function CATIDashboard() {
             </p>
           </div>
           <div className="flex gap-2">
-            <Link href="/">
-              <Button variant="ghost">
-                <LogOut className="w-4 h-4 mr-2" />
-                Sign Out
-              </Button>
-            </Link>
+            <Button
+              variant="ghost"
+              onClick={() => {
+                // Sign out logic here
+                // For example, you can call a sign-out function from Clerk
+                // or redirect to a sign-out page.
+                auth.signOut({
+                  redirectUrl: "/",
+                });
+              }}
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              Sign Out
+            </Button>
           </div>
         </div>
 
