@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CATIProjectList } from "@/components/cati-project-list";
-import { DownloadIcon, LogOut, FileText } from "lucide-react";
+import { DownloadIcon, LogOut, FileText, Sun, Moon } from "lucide-react";
 // Assuming you have a Dialog component from your UI library:
 import {
   Dialog,
@@ -30,6 +30,21 @@ export default function CATIDashboard() {
   const [projectCount, setProjectCount] = useState(0);
   const [pendingCount, setPendingCount] = useState(0);
   const auth = useAuth();
+  const [theme, setTheme] = useState("");
+
+  const toggleTheme = () => {
+    // Toggle between "dark" and empty string
+    const newTheme = localStorage.getItem("theme") === "dark" ? "" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+
+    // Update the DOM to reflect the new theme
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
   useEffect(() => {
     const fetchCounts = async () => {
       try {
@@ -101,6 +116,18 @@ export default function CATIDashboard() {
             </p>
           </div>
           <div className="flex gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              className="rounded-full"
+            >
+              {theme === "dark" ? (
+                <Sun className="size-[18px]" />
+              ) : (
+                <Moon className="size-[18px]" />
+              )}
+            </Button>
             <Button
               variant="ghost"
               onClick={() => {

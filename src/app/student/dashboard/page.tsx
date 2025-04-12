@@ -12,11 +12,26 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProjectList } from "@/components/project-list";
+import { Moon, Sun } from "lucide-react";
 
 export default function StudentDashboard() {
   const [hasProjects, setHasProjects] = useState(false);
   const [projects, setProjects] = useState([]);
+  const [theme, setTheme] = useState("");
 
+  const toggleTheme = () => {
+    // Toggle between "dark" and empty string
+    const newTheme = localStorage.getItem("theme") === "dark" ? "" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+
+    // Update the DOM to reflect the new theme
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
   // Fetch projects from the server
   useEffect(() => {
     const fetchProjects = async () => {
@@ -50,9 +65,18 @@ export default function StudentDashboard() {
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-bold">Student Dashboard</h1>
           <div className="flex gap-2">
-            <Link href="/student/profile">
-              <Button variant="outline">My Profile</Button>
-            </Link>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              className="rounded-full"
+            >
+              {theme === "dark" ? (
+                <Sun className="size-[18px]" />
+              ) : (
+                <Moon className="size-[18px]" />
+              )}
+            </Button>
             <Link href="/">
               <Button variant="ghost">Sign Out</Button>
             </Link>

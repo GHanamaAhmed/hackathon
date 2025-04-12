@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AdminProjectList } from "@/components/admin-project-list";
-import { DownloadIcon, Settings } from "lucide-react";
+import { DownloadIcon, Moon, Settings, Sun } from "lucide-react";
 
 export default function AdminDashboard() {
   const [projectCount, setProjectCount] = useState(0);
@@ -26,6 +26,21 @@ export default function AdminDashboard() {
 
     fetchCounts();
   }, []);
+  const [theme, setTheme] = useState("");
+
+  const toggleTheme = () => {
+    // Toggle between "dark" and empty string
+    const newTheme = localStorage.getItem("theme") === "dark" ? "" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+
+    // Update the DOM to reflect the new theme
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
   return (
     <div className="container py-8 w-full flex justify-center items-center">
       <div className="w-[90%]">
@@ -33,12 +48,18 @@ export default function AdminDashboard() {
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-bold">Administrator Dashboard</h1>
           <div className="flex gap-2">
-            <Link href="/admin/settings">
-              <Button variant="outline">
-                <Settings className="w-4 h-4 mr-2" />
-                Settings
-              </Button>
-            </Link>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              className="rounded-full"
+            >
+              {theme === "dark" ? (
+                <Sun className="size-[18px]" />
+              ) : (
+                <Moon className="size-[18px]" />
+              )}
+            </Button>
             <Link href="/">
               <Button variant="ghost">Sign Out</Button>
             </Link>

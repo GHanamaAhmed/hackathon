@@ -33,7 +33,7 @@ import Image from "next/image";
 export default function LandingPage() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const [theme, setTheme] = useState("");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -51,10 +51,17 @@ export default function LandingPage() {
   }, []);
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-    document.documentElement.classList.toggle(
-      theme === "dark" ? "light" : "dark"
-    );
+    // Toggle between "dark" and empty string
+    const newTheme = localStorage.getItem("theme") === "dark" ? "" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+
+    // Update the DOM to reflect the new theme
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   };
 
   // Animation configurations (if using any animation library)
