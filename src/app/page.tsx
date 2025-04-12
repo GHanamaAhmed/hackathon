@@ -248,13 +248,6 @@ export default function LandingPage() {
                   Join Univate
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="rounded-full h-12 px-8 text-base"
-                >
-                  Request a Demo
-                </Button>
               </div>
               <div className="flex items-center justify-center gap-4 mt-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
