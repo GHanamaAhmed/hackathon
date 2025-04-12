@@ -17,6 +17,7 @@ export const useDarkMode = () => {
     }, [isDarkMode]);
 
     const toggleDarkMode = () => {
+        //@ts-ignore
         setIsDarkMode((prevMode) => !prevMode);
     };
 
