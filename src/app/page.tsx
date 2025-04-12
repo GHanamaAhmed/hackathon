@@ -281,14 +281,7 @@ export default function LandingPage() {
             <div className="relative mx-auto max-w-5xl">
               <div className="rounded-xl overflow-hidden shadow-2xl border border-border/40 bg-gradient-to-b from-background to-muted/20">
                 {/* Replace the empty src with an actual image URL or import */}
-                <Image
-                  src="/univate-dashboard.png"
-                  width={1280}
-                  height={720}
-                  alt="Univate platform dashboard"
-                  className="w-full h-auto"
-                  priority
-                />
+
                 <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"></div>
               </div>
               <div className="absolute -bottom-6 -right-6 -z-10 h-[300px] w-[300px] rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 blur-3xl opacity-70"></div>
