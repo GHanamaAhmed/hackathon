@@ -6,11 +6,10 @@ export const revalidate = 0;
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { userId: string } }
+  { params }: { params: Promise<{ userId: string }> }
 ) {
   try {
-    console.log("Fetching projects for userId:", params.userId);
-    const userId = await params.userId;
+    const userId = (await params).userId;
     const projects = await db.project.findMany({
       where: {
         userId: userId,

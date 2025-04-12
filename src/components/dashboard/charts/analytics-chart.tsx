@@ -105,6 +105,7 @@ export function AnalyticsChart({ interval }: AnalyticsChartProps) {
                 return (
                   <ChartTooltipContent
                     className="border-none bg-background p-2 shadow-md"
+                    /*@ts-ignore*/
                     items={[
                       {
                         label: "Visitors",

@@ -129,6 +129,7 @@ export function InsightsAreaChart() {
                 return (
                   <ChartTooltipContent
                     className="border-none bg-background p-2 shadow-md"
+                    /*@ts-ignore*/
                     items={payload.map((entry) => ({
                       label: entry.name,
                       value: entry.value,

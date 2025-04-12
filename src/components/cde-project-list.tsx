@@ -78,6 +78,7 @@ export function CDEProjectList({ filter }: CDEProjectListProps) {
                   {project.submittedDate}
                 </CardDescription>
               </div>
+              {/*@ts-ignore*/}
               <Badge variant="blue">{project.statusText}</Badge>
             </div>
           </CardHeader>

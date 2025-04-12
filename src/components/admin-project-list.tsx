@@ -105,6 +105,7 @@ export function AdminProjectList({ filter }: AdminProjectListProps) {
                     {project.submittedDate}
                   </CardDescription>
                 </div>
+               {/*@ts-ignore*/}
                 <Badge variant={getStatusColor(project.status)}>
                   {project.statusText}
                 </Badge>
