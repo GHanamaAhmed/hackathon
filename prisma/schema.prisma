@@ -1,0 +1,42 @@
+// prisma/schema.prisma
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+// The models below use MongoDB-style object IDs.
+
+// Enum for project states with English translations
+enum ProjectState {
+    SENT // مرسل (Submitted)
+    PROCESSING // قيد المعالجة (Processing)
+    ROUTED_TO_UI // موجه إلى الواجهة 1 2 3 (Routed to interface 1 2 3)
+    REJECTED // مرفوض (Rejected)
+}
+
+model Project {
+    id          String        @id @default(auto()) @map("_id") @db.ObjectId
+    userId      String
+    title       String
+    description String
+    createdAt   DateTime      @default(now())
+    state       ProjectState? @default(SENT)
+    currentStep Int?
+    // You can use embedded documents or references. In this example we use a relation.
+    // Note: MongoDB relations in Prisma are supported with some limitations.
+    teamMembers TeamMember[]
+}
+
+model TeamMember {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    name      String
+    studentId String
+    email     String
+    phone     String
+    project   Project? @relation(fields: [projectId], references: [id])
+    projectId String?
+}
