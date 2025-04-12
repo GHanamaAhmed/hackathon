@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,9 +9,23 @@ import { AdminProjectList } from "@/components/admin-project-list";
 import { DownloadIcon, Settings } from "lucide-react";
 
 export default function AdminDashboard() {
-  const [projectCount] = useState(12);
-  const [pendingCount] = useState(5);
+  const [projectCount, setProjectCount] = useState(0);
+  const [pendingCount, setPendingCount] = useState(0);
 
+  useEffect(() => {
+    const fetchCounts = async () => {
+      try {
+        const response = await fetch("/api/admin/dashboard");
+        const data = await response.json();
+        setProjectCount(data.totalCount);
+        setPendingCount(data.pendingCount);
+      } catch (error) {
+        console.error("Error fetching counts:", error);
+      }
+    };
+
+    fetchCounts();
+  }, []);
   return (
     <div className="container py-8 w-full flex justify-center items-center">
       <div className="w-[90%]">
