@@ -256,20 +256,6 @@ export default function LandingPage() {
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
               </div>
-              <div className="flex items-center justify-center gap-4 mt-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Check className="size-4 text-primary" />
-                  <span>No credit card</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Check className="size-4 text-primary" />
-                  <span>14-day trial</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Check className="size-4 text-primary" />
-                  <span>Cancel anytime</span>
-                </div>
-              </div>
             </div>
 
             <div className="relative mx-auto max-w-5xl">
