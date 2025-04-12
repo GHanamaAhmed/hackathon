@@ -29,6 +29,7 @@ model Project {
     // You can use embedded documents or references. In this example we use a relation.
     // Note: MongoDB relations in Prisma are supported with some limitations.
     teamMembers TeamMember[]
+    User        User          @relation(fields: [userId], references: [id])
 }
 
 model TeamMember {
@@ -39,4 +40,26 @@ model TeamMember {
     phone     String
     project   Project? @relation(fields: [projectId], references: [id])
     projectId String?
+    User      User?    @relation(fields: [userId], references: [id])
+    userId    String?  @db.ObjectId
+}
+
+// Enum for user roles
+enum UserRole {
+    STUDENT
+    INC
+    CDE
+    CATI
+}
+
+model User {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    name      String
+    email     String   @unique
+    role      UserRole
+    createdAt DateTime @default(now())
+
+    // Relations
+    projects    Project[]
+    teamMembers TeamMember[]
 }

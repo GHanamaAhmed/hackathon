@@ -218,9 +218,9 @@ export default function ProjectDetails({
                         <SelectValue placeholder="Select interface" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="1">Interface 1</SelectItem>
-                        <SelectItem value="2">Interface 2</SelectItem>
-                        <SelectItem value="3">Interface 3</SelectItem>
+                        <SelectItem value="1">Incabator</SelectItem>
+                        <SelectItem value="2">Cde</SelectItem>
+                        <SelectItem value="3">Cati 3</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
