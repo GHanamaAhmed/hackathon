@@ -85,7 +85,7 @@ export function CATIProjectList({ filter }: CATIProjectListProps) {
             <p className="line-clamp-2">{project.description}</p>
           </CardContent>
           <CardFooter className="flex justify-end">
-            <Link href={`/admin/cati/projects/${project.id}`}>
+            <Link href={`/cati/projects/${project.id}`}>
               <Button variant="outline">
                 <Eye className="w-4 h-4 mr-1" />
                 View Details

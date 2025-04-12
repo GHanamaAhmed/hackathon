@@ -48,7 +48,7 @@ export default function CATIDashboard() {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const response = await fetch("/api/cde/dashboard");
+        const response = await fetch("/api/cati/dashboard");
         const data = await response.json();
         setProjectCount(data.totalCount);
         setPendingCount(data.pendingCount);

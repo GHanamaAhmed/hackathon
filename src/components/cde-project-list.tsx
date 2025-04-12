@@ -86,7 +86,7 @@ export function CDEProjectList({ filter }: CDEProjectListProps) {
             <p className="line-clamp-2">{project.description}</p>
           </CardContent>
           <CardFooter className="flex justify-end">
-            <Link href={`/admin/cde/projects/${project.id}`}>
+            <Link href={`/cde/projects/${project.id}`}>
               <Button variant="outline">
                 <Eye className="w-4 h-4 mr-1" />
                 View Details

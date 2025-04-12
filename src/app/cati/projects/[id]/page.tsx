@@ -56,7 +56,7 @@ export default function CATIProjectDetails({
         <Button
           variant="ghost"
           className="mb-6"
-          onClick={() => router.push("/admin/cati")}
+          onClick={() => router.push("/cati")}
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Dashboard
